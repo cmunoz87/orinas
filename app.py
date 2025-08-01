@@ -2,7 +2,7 @@ import streamlit as st
 from fpdf import FPDF
 
 # =========================
-# DICCIONARIO DE PARÁMETROS
+# DICCIONARIO DE PARÁMETROS COMPLETO
 # =========================
 parametros = {
     "Color": {
@@ -10,7 +10,7 @@ parametros = {
         "metodo": "Revisión visual"
     },
     "Aspecto (Turbidez)": {
-        "resultados": ["Transparente", "Límipida", "Levemente turbia", "Turbia", "Lechosa"],
+        "resultados": ["Transparente", "Límpida", "Levemente turbia", "Turbia", "Lechosa"],
         "metodo": "Revisión visual"
     },
     "Eritrocitos (RBC)": {
@@ -18,38 +18,77 @@ parametros = {
         "metodo": "Citometría de flujo"
     },
     "Eritrocitos (RBC) morfología": {
-        "resultados": ["Isomórficos","Dismórficos"],
+        "resultados": ["Isomórficos", "Dismórficos"],
         "metodo": "Citometría de flujo"
     },
     "Eritrocitos Dismórficos": {
-        "resultados": ["5%", "10%", "15%", "20%" ,"50%"],
+        "resultados": ["5%", "10%", "15%", "20%", "50%"],
         "metodo": "Citometría de flujo"
     },
     "Leucocitos (WBC)": {
-        "resultados": ["0-5/campo", "5-10/campo", "10-25/campo", "25-50/campo", "50-100/campo", ">100/campo"],
+        "resultados": ["0-5/campo", "5-10", "10-25", "25-50", "50-100", ">100"],
         "metodo": "Citometría de flujo"
     },
     "Piocitos": {
         "resultados": ["No se observan", "Muy escasas", "Escasas", "Regulares", "Abundantes"],
-        "metodo": "Citometría de flujo"
+        "metodo": "Microscopía"
     },
     "Placas de pus": {
         "resultados": ["No se observan", "Muy escasas", "Escasas", "Regulares", "Abundantes"],
-        "metodo": "Citometría de flujo"
+        "metodo": "Microscopía"
     },
     "Células epiteliales": {
         "resultados": ["No se observan", "Muy escasas", "Escasas", "Regulares", "Abundantes"],
-        "metodo": "Citometría de flujo"
+        "metodo": "Microscopía"
     },
     "Mucus": {
         "resultados": ["No se observa", "Muy escaso", "Escaso", "Regular", "Abundante"],
-        "metodo": "Citometría de flujo"
+        "metodo": "Microscopía"
     },
     "Bacterias": {
         "resultados": ["No se observan", "Muy escasas", "Escasas", "Regulares", "Abundantes"],
-        "metodo": "Citometría de flujo"
+        "metodo": "Microscopía"
+    },
+    "Levaduras": {
+        "resultados": ["No se observan", "Escasas", "Regulares", "Abundantes"],
+        "metodo": "Microscopía"
+    },
+    "Cristales": {
+        "resultados": ["No se observan", "Oxalato de calcio", "Ácido úrico", "Fosfato triple", "Otros"],
+        "metodo": "Microscopía"
+    },
+    "Cilindros": {
+        "resultados": ["No se observan", "Hialinos", "Granulosos", "Otros"],
+        "metodo": "Microscopía"
+    },
+    "Filamento de moco": {
+        "resultados": ["No se observan", "Muy escasos", "Escasos", "Regulares", "Abundantes"],
+        "metodo": "Microscopía"
+    },
+    "Cilindros hialinos": {
+        "resultados": ["No se observan", "Escasos", "Regulares", "Abundantes"],
+        "metodo": "Microscopía"
+    },
+    "Cilindros granulosos": {
+        "resultados": ["No se observan", "Escasos", "Regulares", "Abundantes"],
+        "metodo": "Microscopía"
+    },
+    "Cilindros céreos": {
+        "resultados": ["No se observan", "Escasos", "Regulares", "Abundantes"],
+        "metodo": "Microscopía"
+    },
+    "Cilindros eritrocitarios": {
+        "resultados": ["No se observan", "Escasos", "Regulares", "Abundantes"],
+        "metodo": "Microscopía"
+    },
+    "Cilindros leucocitarios": {
+        "resultados": ["No se observan", "Escasos", "Regulares", "Abundantes"],
+        "metodo": "Microscopía"
+    },
+    "Cilindros grasos": {
+        "resultados": ["No se observan", "Escasos", "Regulares", "Abundantes"],
+        "metodo": "Microscopía"
     }
-    # Agregar aquí el resto de los parámetros según el diccionario completo
 }
 
 # =========================
@@ -107,4 +146,3 @@ if st.button("📄 Generar PDF"):
             )
 
         st.success("PDF generado exitosamente.")
-
