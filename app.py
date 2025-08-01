@@ -18,11 +18,7 @@ parametros = {
         "metodo": "Citometría de flujo"
     },
     "Eritrocitos (RBC) morfología": {
-        "resultados": ["Isomórficos", "Dismórficos"],
-        "metodo": "Citometría de flujo"
-    },
-    "Eritrocitos Dismórficos": {
-        "resultados": ["5%", "10%", "15%", "20%", "50%"],
+        "resultados": ["Isomórficos", "5% Dismórficos", "10% Dismórficos", "15% Dismórficos", "20% Dismórficos", "50% Dismórficos"],
         "metodo": "Citometría de flujo"
     },
     "Leucocitos (WBC)": {
