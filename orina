@@ -1,0 +1,67 @@
+import streamlit as st
+import pandas as pd
+from fpdf import FPDF
+import base64
+
+# --- Función para generar el PDF ---
+def generar_pdf(selecciones):
+    pdf = FPDF()
+    pdf.set_auto_page_break(auto=True, margin=15)
+    pdf.add_page()
+    pdf.set_font("Arial", size=12)
+
+    pdf.cell(200, 10, txt="Resultados de Parámetros de Orina - Sedimento", ln=True, align="C")
+    pdf.ln(10)
+
+    for parametro, datos in selecciones.items():
+        pdf.set_font("Arial", size=11)
+        pdf.multi_cell(0, 8, f"Parámetro: {parametro}")
+        pdf.multi_cell(0, 8, f"Resultado seleccionado: {datos['resultado']}")
+        pdf.multi_cell(0, 8, f"Método: {datos['método']}")
+        pdf.ln(5)
+
+    pdf_output = "resultados_parametros.pdf"
+    pdf.output(pdf_output)
+    return pdf_output
+
+# --- Interfaz Streamlit ---
+st.title("Parámetros de Orina - Sedimento")
+
+uploaded_file = st.file_uploader("Suba el archivo Excel con los parámetros", type=["xlsx"])
+
+if uploaded_file:
+    glosa_df = pd.read_excel(uploaded_file, sheet_name='glosa')
+
+    st.subheader("Selección de resultados por parámetro")
+    resultados_seleccionados = {}
+
+    for _, row in glosa_df.iterrows():
+        parametro = row["Parámetro"]
+        resultados = [r.strip() for r in str(row["Resultados posibles"]).split(",")]
+        metodo = row["Método"]
+
+        with st.expander(f"⚙️ {parametro}"):
+            resultado = st.selectbox(f"Seleccione resultado para {parametro}:", resultados, key=parametro)
+            st.write(f"**Método:** {metodo}")
+            resultados_seleccionados[parametro] = {
+                "resultado": resultado,
+                "método": metodo
+            }
+
+    # Botón para generar PDF
+    if st.button("📄 Generar PDF"):
+        pdf_path = generar_pdf(resultados_seleccionados)
+
+        with open(pdf_path, "rb") as f:
+            pdf_bytes = f.read()
+            b64 = base64.b64encode(pdf_bytes).decode()
+
+        st.download_button(
+            label="⬇️ Descargar PDF",
+            data=pdf_bytes,
+            file_name="resultados_parametros.pdf",
+            mime="application/pdf"
+        )
+
+else:
+    st.info("Por favor, suba el archivo Excel para continuar.")
