@@ -14,7 +14,7 @@ parametros = {
         "metodo": "Revisión visual"
     },
     "Eritrocitos (RBC)": {
-        "resultados": ["0-3/campo", "3-5", "5-10", "10-25", "25-50", "50-100", ">100"],
+        "resultados": ["0-3/campo", "3-5 /campo", "5-10 /campo", "10-25/campo", "25-50/campo", "50-100/campo", ">100/campo"],
         "metodo": "Citometría de flujo"
     },
     "Eritrocitos (RBC) morfología": {
@@ -22,7 +22,7 @@ parametros = {
         "metodo": "Citometría de flujo"
     },
     "Leucocitos (WBC)": {
-        "resultados": ["0-5/campo", "5-10", "10-25", "25-50", "50-100", ">100"],
+        "resultados": ["0-5/campo", "5-10 /campo", "10-25 /campo", "25-50 /campo", "50-100 /campo", ">100/campo"],
         "metodo": "Citometría de flujo"
     },
     "Piocitos": {
